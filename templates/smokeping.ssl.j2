@@ -1,0 +1,14 @@
+server {
+  listen                        443 ssl;
+  ssl_certificate               /etc/ssl/certs/chain.pem;
+  ssl_certificate_key           /etc/ssl/private/{{ inventory_hostname }}.pem;
+  server_name                   smokeping smokeping.neuronpointer.net;
+
+  access_log                    /var/log/nginx/smokeping.access.log;
+
+  location / {
+    proxy_pass                  https://smokeping.neuronpointer.net;
+    auth_basic                  "smokeping";
+    auth_basic_user_file        htpasswd;
+  }
+}

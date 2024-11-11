@@ -1,0 +1,6 @@
+server {
+        listen          80;
+	server_name     smokeping smokeping.{{ domain }};
+        return 301      https://smokeping.{{ domain }}$request_uri;
+}
+

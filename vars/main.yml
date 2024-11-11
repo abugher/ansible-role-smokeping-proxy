@@ -1,0 +1,23 @@
+---
+template_files:
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                'templates/smokeping.ssl.j2'
+    dest:               '/etc/nginx/sites-available/smokeping.ssl'
+  - owner:              'root'
+    group:              'root'
+    mode:               '0644'
+    src:                'templates/smokeping.j2'
+    dest:               '/etc/nginx/sites-available/smokeping'
+symlinks:
+  - owner:              'root'
+    group:              'root'
+    src:                '/etc/nginx/sites-available/smokeping'
+    dest:               '/etc/nginx/sites-enabled/smokeping'
+  - owner:              'root'
+    group:              'root'
+    src:                '/etc/nginx/sites-available/smokeping.ssl'
+    dest:               '/etc/nginx/sites-enabled/smokeping.ssl'
+restart_services:
+  - 'nginx'
