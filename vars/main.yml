@@ -1,4 +1,16 @@
 ---
+create_files:
+  - owner:              'root'
+    group:              'www-data'
+    mode:               '0750'
+    path:               '/etc/smokeping-proxy'
+    state:              'directory'
+install_files:
+  - owner:              'root'
+    group:              'www-data'
+    mode:               '0640'
+    src:                '../../sensitive-ansible/roles/smokeping-proxy/files/conf/htpasswd.users'
+    dest:               '/etc/smokeping-proxy/htpasswd.users'
 template_files:
   - owner:              'root'
     group:              'root'

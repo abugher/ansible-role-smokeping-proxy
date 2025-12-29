@@ -9,6 +9,6 @@ server {
   location / {
     proxy_pass                  https://smokeping.neuronpointer.net;
     auth_basic                  "smokeping";
-    auth_basic_user_file        htpasswd;
+    auth_basic_user_file        /etc/smokeping-proxy/htpasswd.users;
   }
 }
